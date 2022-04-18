@@ -1,0 +1,149 @@
+.workout {
+  background-color: var(--color-dark--2);
+  border-radius: 5px;
+  padding: 1.5rem 2.25rem;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem 1.5rem;
+  position: relative;
+
+  &:not(:last-child) {
+    margin-bottom: 1.75rem;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    width: 380px;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    padding: 1rem 1.5rem;
+    width: 350px;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    width: 320px;
+  }
+
+  @media only screen and (max-width: $bp-micro) {
+    width: 290px;
+    padding: 1rem;
+  }
+
+  &--running {
+    border-left: 5px solid var(--color-brand--2);
+  }
+
+  &--cycling {
+    border-left: 5px solid var(--color-brand--1);
+  }
+
+  &__title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    grid-column: 1 / span 3;
+  }
+
+  &__details {
+    display: flex;
+    align-items: baseline;
+
+    &--address {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__icon {
+    font-size: 1.8rem;
+    margin-right: 0.2rem;
+    height: 0.28rem;
+  }
+
+  &__value,
+  &__location {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  &__unit,
+  &__city {
+    font-size: 1.1rem;
+    color: var(--color-light--1);
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+}
+
+.dots__btn {
+  width: 2rem;
+  height: 2rem;
+  fill: var(--color-light--1);
+  grid-column: 4 / span 1;
+  justify-self: end;
+  transition: all .3s;
+
+  &:hover {
+    fill: var(--color-white);
+    cursor: pointer;
+  }
+}
+
+/* Menu */
+.menu {
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+  width: 14rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: var(--color-dark--2);
+  box-shadow: 0 0 .8rem #222;
+  transition: all .3s;
+  visibility: visible;
+  opacity: 1;
+
+  @media only screen and (max-width: $bp-small) {
+    top: 1.7rem;
+  }
+
+  &__hidden {
+    visibility: hidden;
+    opacity: 0;
+    top: 0;
+  }
+
+  &__list {
+    list-style: none;
+    width: 100%;
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    color: var(--color-light--2);
+    font-family: inherit;
+    font-size: 1.4rem;
+    padding: 3px;
+    transition: all .3s;
+
+    &:hover {
+      color: var(--color-light--1);
+      cursor: pointer;
+
+      & .menu__btn--icon {
+        fill: var(--color-light--1);
+      }
+    }
+
+    &--icon {
+      width: 2rem;
+      height: 2rem;
+      fill: var(--color-dark--1);
+      margin-right: 2px;
+      transform: translateY(5px);
+      transition: all .3s;
+    }
+  }
+}

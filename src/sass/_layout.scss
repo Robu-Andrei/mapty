@@ -1,0 +1,33 @@
+.sidebar {
+  // flex-basis: 50rem;
+  max-width: 50rem;
+  background-color: var(--color-dark--1);
+  padding: 3rem 4rem 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (max-width: $bp-large) {
+    max-width: 45rem;
+    padding: 2rem 2.5rem 2.5rem 3rem;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    max-width: 100%;
+    height: 40vh;
+    padding: 1.75rem 2.5rem 2.5rem 1.75rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    padding: 1.75rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    padding: 1.75rem 0.6rem;
+  }
+}
+
+#map {
+  flex: 1;
+  height: 100%;
+  background-color: var(--color-light--1);
+}

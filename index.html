@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="shortcut icon" type="image/png" href="src/img/icon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+  <link rel="stylesheet" href="src/sass/main.scss" />
+  <script type="module" defer src="src/js/controller.js"></script>
+  <title>mapty // Map your workouts</title>
+</head>
+
+<body>
+  <div class="sidebar">
+    <img src="src/img/logo.png" alt="Logo" class="logo" />
+
+    <div class="options">
+      <button class="btn__options btn__options--sort">Sort by
+        <svg class="btn__options--icon">
+          <use href="src/img/sprite.svg#icon-chevron-down"></use>
+        </svg>
+      </button>
+      <button class="btn__options btn__options--clear">Clear All</button>
+    </div>
+
+    <div class="sort__options sort__options--hidden">
+      <button class="sort__btn" data-type="dateForSort">
+        <span class="sort__btn--type">📆</span>
+        <svg class="sort__btn--icon">
+          <use href="src/img/sprite.svg#icon-chevron-down"></use>
+        </svg>
+      </button>
+      <button class="sort__btn" data-type="distance">
+        <span class="sort__btn--type">🏃‍♂️</span>
+        <svg class="sort__btn--icon">
+          <use href="src/img/sprite.svg#icon-chevron-down"></use>
+        </svg>
+      </button>
+      <button class="sort__btn" data-type="duration">
+        <span class="sort__btn--type">⏱</span>
+        <svg class="sort__btn--icon">
+          <use href="src/img/sprite.svg#icon-chevron-down"></use>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="workouts">
+      <form class="form form__hidden">
+        <div class="form__row">
+          <label class="form__label">Type</label>
+          <select class="form__input form__input--type">
+            <option value="running">Running</option>
+            <option value="cycling">Cycling</option>
+          </select>
+        </div>
+        <div class="form__row">
+          <label class="form__label">Distance</label>
+          <input class="form__input form__input--distance" placeholder="km" />
+        </div>
+        <div class="form__row">
+          <label class="form__label">Duration</label>
+          <input class="form__input form__input--duration" placeholder="min" />
+        </div>
+        <div class="form__row">
+          <label class="form__label">Cadence</label>
+          <input class="form__input form__input--cadence" placeholder="step/min" />
+        </div>
+        <div class="form__row form__row--hidden">
+          <label class="form__label">Elev Gain</label>
+          <input class="form__input form__input--elevation" placeholder="meters" />
+        </div>
+        <button class="form__btn">OK</button>
+      </form>
+
+      <!-- <div class="instruction">
+        Click on map to add a workout →
+      </div> -->
+
+      <!-- <li class="workout workout--running" data-id="1234567890">
+        <h2 class="workout__title">Running on April 14 - 10:45</h2>
+        <svg class="dots__btn" data-btn="1">
+          <use href="img/sprite.svg#icon-dots-three-horizontal"></use>
+        </svg>
+        <div class="menu menu__hidden" data-menu="1">
+          <ul class="menu__list">
+            <li class="menu__btn menu__btn--edit">
+              <svg class="menu__btn--icon">
+                <use href="img/sprite.svg#icon-pencil"></use>
+              </svg>
+              <span>Edit form</span>
+            </li>
+            <li class="menu__btn menu__btn--delete">
+              <svg class="menu__btn--icon">
+                <use href="img/sprite.svg#icon-trash"></use>
+              </svg>
+              <span>Delete workout</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="workout__details">
+          <span class="workout__icon">🏃‍♂️</span>
+          <span class="workout__value">5.2</span>
+          <span class="workout__unit">km</span>
+        </div>
+        <div class="workout__details">
+          <span class="workout__icon">⏱</span>
+          <span class="workout__value">24</span>
+          <span class="workout__unit">min</span>
+        </div>
+        <div class="workout__details">
+          <span class="workout__icon">⚡️</span>
+          <span class="workout__value">4.6</span>
+          <span class="workout__unit">min/km</span>
+        </div>
+        <div class="workout__details">
+          <span class="workout__icon">🦶🏼</span>
+          <span class="workout__value">178</span>
+          <span class="workout__unit">spm</span>
+        </div>
+        <div class="workout__details workout__details--address">
+          <span class="workout__icon">📍</span>
+          <span class="workout__location">Piața Gării,</span>
+          <span class="workout__city">Craiova</span>
+        </div>
+      </li>
+
+      <li class="workout workout--cycling" data-id="1234567891">
+        <h2 class="workout__title">Cycling on April 5 - 12:06</h2>
+        <svg class="dots__btn" data-btn="2">
+          <use href="img/sprite.svg#icon-dots-three-horizontal"></use>
+        </svg>
+        <div class="menu menu__hidden" data-menu="2">
+          <ul class="menu__list">
+            <li class="menu__btn menu__btn--edit">
+              <svg class="menu__btn--icon">
+                <use href="img/sprite.svg#icon-pencil"></use>
+              </svg>
+              <span>Edit form</span>
+            </li>
+            <li class="menu__btn menu__btn--delete">
+              <svg class="menu__btn--icon">
+                <use href="img/sprite.svg#icon-trash"></use>
+              </svg>
+              <span>Delete workout</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="workout__details">
+          <span class="workout__icon">🚴‍♀️</span>
+          <span class="workout__value">27</span>
+          <span class="workout__unit">km</span>
+        </div>
+        <div class="workout__details">
+          <span class="workout__icon">⏱</span>
+          <span class="workout__value">95</span>
+          <span class="workout__unit">min</span>
+        </div>
+        <div class="workout__details">
+          <span class="workout__icon">⚡️</span>
+          <span class="workout__value">16</span>
+          <span class="workout__unit">km/h</span>
+        </div>
+        <div class="workout__details">
+          <span class="workout__icon">⛰</span>
+          <span class="workout__value">223</span>
+          <span class="workout__unit">m</span>
+        </div>
+        <div class="workout__details workout__details--address">
+          <span class="workout__icon">📍</span>
+          <span class="workout__location">Strada Trotușului,</span>
+          <span class="workout__city">Rovine</span>
+        </div>
+      </li> -->
+    </ul>
+
+    <p class="copyright"> &copy; Copyright by
+      <a class="twitter-link" target="_blank" href="https://twitter.com/jonasschmedtman">Jonas Schmedtmann</a>. Features
+      such as: sort, delete, edit, location and modal window are implemented by <a class="github-link" target="_blank"
+        href="https://github.com/Robu-Andrei?tab=repositories">Robu Andrei</a>.
+    </p>
+  </div>
+
+  <div class="overlay hidden"></div>
+
+  <div class="message hidden">
+    <h3 class="message__heading">
+      Are you sure you want to clear all workouts?
+    </h3>
+    <div class="message__buttons">
+      <button class="yes__btn">Yes</button>
+      <button class="no__btn">No</button>
+    </div>
+  </div>
+
+  <div class="error hidden">
+    <h3 class="error__heading"></h3>
+    <p class="error__text"></p>
+    <button class="error__btn">❌</button>
+  </div>
+
+  <div id="map"></div>
+</body>
+
+</html>

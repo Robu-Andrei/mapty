@@ -1,0 +1,362 @@
+@import 'mixin';
+
+.logo {
+  height: 5.2rem;
+  align-self: center;
+  margin-bottom: 4rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    margin-bottom: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    height: 4.2rem;
+  }
+}
+
+.workouts {
+  list-style: none;
+  // height: 77vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // background-color: #222;
+  }
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    width: 380px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    margin-bottom: .8rem;
+    width: 350px;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    width: 320px;
+  }
+
+  @media only screen and (max-width: $bp-micro) {
+    width: 290px;
+  }
+}
+
+.btn__options {
+  background: none;
+  border: none;
+  border: 2px solid var(--color-dark--2);
+  border-radius: 1rem;
+  color: var(--color-light--2);
+  font-family: inherit;
+  font-size: 1.4rem;
+  padding: .8rem;
+  transition: all .3s;
+
+  @media only screen and (max-width: $bp-small) {
+    padding: .6rem;
+  }
+
+  &:hover {
+    border: 2px solid var(--color-light--1);
+    cursor: pointer;
+  }
+
+  &--sort {
+    padding-top: .3rem;
+    position: relative;
+  }
+
+  &--icon {
+    width: 1.9rem;
+    height: 1.9rem;
+    fill: currentColor;
+    transform: translateY(.4rem);
+  }
+}
+
+/* Sort */
+.sort__options {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  height: 3.8rem;
+  overflow: hidden;
+  transition: all .5s ease-out;
+
+  @media only screen and (max-width: $bp-medium) {
+    overflow: visible;
+    width: 380px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    width: 350px;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    width: 320px;
+  }
+
+  @media only screen and (max-width: $bp-micro) {
+    width: 290px;
+  }
+
+  &--hidden {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.sort__btn {
+  background: none;
+  border: none;
+  padding: .6rem;
+  transition: all .5s;
+  transform: scale(1);
+
+  &:hover {
+    transform: translateY(-.5rem) scale(1.2);
+    cursor: pointer;
+  }
+
+  &:not(:last-child) {
+    margin-right: 1.5rem;
+  }
+
+  &--type {
+    font-size: 1.9rem;
+    margin-right: -2px;
+  }
+
+  &--icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: var(--color-light--2);
+    transform: translateY(.2rem);
+  }
+}
+
+.copyright {
+  margin-top: auto;
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--color-light--1);
+
+  @media only screen and (max-width: $bp-large) {
+    padding: 0 2rem;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
+}
+
+.instruction {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 3rem;
+
+  @media only screen and (max-width: $bp-smallest) {
+    font-size: 1.7rem;
+    margin-top: 2rem;
+  }
+}
+
+.message {
+  @include centerPosition;
+  width: 48rem;
+  height: 20rem;
+  padding: 3rem;
+  text-align: center;
+
+  z-index: 1000;
+  background-color: var(--color-dark--2);
+
+  @media only screen and (max-width: $bp-small) {
+    width: 300px;
+    padding: 2rem;
+  }
+
+  &__heading {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+  }
+
+  &__buttons>* {
+    border: none;
+    border-radius: 1rem;
+    width: 6rem;
+    height: 4rem;
+    color: black;
+    font-family: inherit;
+    font-size: 1.4rem;
+    padding: .8rem;
+    cursor: pointer;
+    transition: all .3s;
+  }
+
+  .yes__btn {
+    background-color: var(--color-brand--2);
+
+    &:hover {
+      background-color: lighten(#00c46a, 10%);
+    }
+  }
+
+  .no__btn {
+    background-color: var(--color-brand--1);
+
+    &:hover {
+      background-color: darken(#ffb545, 20%);
+    }
+  }
+}
+
+.error {
+  @include centerPosition;
+  width: 52rem;
+  height: 23rem;
+  text-align: center;
+  padding: 3rem;
+  z-index: 1000;
+  background-color: var(--color-dark--2);
+
+  @media only screen and (max-width: $bp-small) {
+    width: 300px;
+    height: 17rem;
+    padding: 2rem;
+  }
+
+  &__heading {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 1rem 0 3rem 0;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 2.3rem;
+      margin: 1rem 0 2rem 0;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-family: inherit;
+    font-size: 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    @media only screen and (max-width: $bp-small) {
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  &__text {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-light--3);
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  z-index: 500;
+}
+
+.hidden {
+  display: none;
+}
+
+.twitter-link,
+.github-link {
+
+  &:link,
+  &:visited {
+    color: var(--color-light--1);
+    transition: all 0.2s;
+  }
+
+  &:hover,
+  &:active {
+    color: var(--color-light--2);
+  }
+}
+
+/* Popup width is defined in JS using options */
+.leaflet-popup {
+  &-content-wrapper {
+    background-color: var(--color-dark--1) !important;
+    color: var(--color-light--2) !important;
+    border-radius: 5px;
+    padding-right: .6rem;
+  }
+
+  &-content {
+    font-size: 1.5rem;
+
+    @media only screen and (max-width: $bp-small) {
+      margin: 1rem 2rem 1rem .8rem !important;
+    }
+  }
+
+  &-tip {
+    background-color: var(--color-dark--1) !important;
+  }
+}
+
+.leaflet-marker-icon {
+  @media only screen and (max-width: $bp-small) {
+    width: 4.4rem !important;
+    height: 4.4rem !important;
+  }
+}
+
+.running-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid var(--color-brand--2);
+}
+
+.cycling-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid var(--color-brand--1);
+}

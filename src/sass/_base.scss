@@ -1,0 +1,60 @@
+:root {
+  --color-brand--1: #ffb545;
+  --color-brand--2: #00c46a;
+
+  --color-dark--1: #2d3439;
+  --color-dark--2: #42484d;
+  --color-dark--3: #524a47;
+  --color-dark--4: #4e5458;
+  --color-light--1: #aaa;
+  --color-light--2: #ececec;
+  --color-light--3: rgb(214, 222, 224);
+  --color-white: #fff;
+}
+
+$bp-largest: 81.25em; // 1300px
+$bp-large: 68.75em; // 1100px
+$bp-medium: 56.25em; // 900px
+$bp-small: 31.25em; // 500px
+$bp-smallest: 25em; // 400px
+$bp-micro: 21.25em; // 330px
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 56.25%; // 1rem = 9px
+  }
+
+  @media only screen and (max-width: 62.5em) {
+    font-size: 50%; // 1rem = 8px
+  }
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-light--2);
+  font-weight: 400;
+  line-height: 1.6;
+  height: 100vh;
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
+  position: relative;
+
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+
+  @media only screen and (max-width: $bp-medium) {
+    flex-direction: column;
+  }
+}
