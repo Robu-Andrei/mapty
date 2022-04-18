@@ -38,7 +38,7 @@ class MapView extends View {
 
   renderWorkoutMarker(workout) {
     const myIcon = L.icon({
-      iconUrl: `${icon}.png`,
+      iconUrl: `${icon}`,
       iconSize: [46, 46],
       iconAnchor: [22, 94],
       popupAnchor: [0, -90],
