@@ -1,7 +1,7 @@
-import 'leaflet';
 import sprite from 'url:../../img/sprite.svg';
 import View from './View.js';
 import { validInputs, allPositive, getDataFromNewDate } from '../helpers.js';
+import 'leaflet';
 
 class WorkoutsListView extends View {
   _mapEvent = {};

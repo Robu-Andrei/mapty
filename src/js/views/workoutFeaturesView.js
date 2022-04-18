@@ -1,7 +1,7 @@
-import 'leaflet';
 import View from './View.js';
 import workoutsListView from './workoutsListView.js';
 import { findPopupByClassName, findMarkerByClassName } from '../helpers.js';
+import 'leaflet';
 
 class WorkoutFeaturesView extends View {
   _btnYes = document.querySelector('.yes__btn');

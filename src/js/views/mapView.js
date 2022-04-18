@@ -1,6 +1,6 @@
-import 'leaflet';
 import workoutsListView from './workoutsListView.js';
 import View from './View.js';
+import 'leaflet';
 import icon from 'url:../../img/icon.png';
 
 class MapView extends View {

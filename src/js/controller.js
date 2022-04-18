@@ -1,12 +1,12 @@
-import 'leaflet';
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
 import * as model from './model.js';
 import mapView from './views/mapView.js';
 import workoutsListView from './views/workoutsListView.js';
 import workoutFeaturesView from './views/workoutFeaturesView.js';
 import { findWorkout } from './helpers.js';
+
+import 'leaflet';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 // Get position from Geo API and load map
 const controlMap = function () {
